@@ -1,0 +1,36 @@
+# Esdras 
+
+config system admin 
+
+edit "prof_admin_Esdras" 
+
+set password _3$#Lbgk7uANt0t0_ 
+
+set accprofile "prof_admin"  
+
+set vdom "VDM-AG10" 
+
+#
+#
+next
+#
+#
+# Quentin 
+
+edit "prof_admin_Quentin" 
+
+set password _Qu3#H3mer7cK$_ 
+
+set accprofile "prof_admin" 
+
+set vdom "VDM-AG10" 
+
+#
+#
+next
+#
+#
+end
+#
+
+

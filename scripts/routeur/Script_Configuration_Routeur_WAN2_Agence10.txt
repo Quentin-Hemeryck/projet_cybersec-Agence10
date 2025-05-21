@@ -1,0 +1,73 @@
+!!! Configuration du routeur WAN2 !!!
+!!! Auteur : Esdras Lubanguku Lua Ntoto !!!
+enable
+configure terminal
+
+! Nom du routeur
+hostname G2-RTR-WN002-00-P-00
+
+! Bannières de sécurité
+banner motd #Accès réservé uniquement aux utilisateurs autorisés. Toute activité est enregistrée.#
+
+! Mot de passe privilégié ( cas où on est en console )
+enable secret Cisco123!
+service password-encryption
+
+! Désactiver la résolution DNS (évite les pauses quand une commande est mal tapée)
+no ip domain lookup
+! Si réactivation ( ip domain-lookup ) !
+
+! Domaine nécessaire pour SSH
+ip domain name HEH.local
+
+! Configuration de la liste "default" pour les authentifications
+aaa new-model
+aaa authentication login default local
+
+! Création de l'utilisateur admin pour SSH
+username admin privilege 15 secret _MAN50ux2025*_xx
+
+! Activer le routage IP si nécessaire
+ip routing
+
+
+! Génération de la clé RSA pour SSH
+crypto key generate rsa
+2048
+no
+
+! Configuration du SSH ( temps pour s'authentifier : 60 secondes )
+ip ssh time-out 60
+ip ssh authentication-retries 3
+
+! Restreindre l'accès SSH
+access-list SSH-G0/0/0 permit 192.168.2.0 0.0.0.255
+line vty 0 4
+transport input ssh
+access-class SSH-G0/0/0 in
+login authentication default
+transport input ssh
+exec-timeout 10 0
+exit
+
+! Configuration de la console (accès physique)
+line console 0
+password Cisco
+exec-timeout 5 0
+exit
+
+
+! Configuration de l'interfaces
+interface GigabitEthernet 0/0/0
+description Interface WAN2 de l'Agence 10
+ip address 192.168.2.13 255.255.255.0
+no shutdown
+exit
+exit
+
+
+
+! Sauvegarde de la configuration
+copy running-config startup-config
+
+end

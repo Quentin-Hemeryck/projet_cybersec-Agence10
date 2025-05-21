@@ -1,0 +1,89 @@
+# ============================================================
+# Fichier de configuration – Profil Antivirus AV-AG010
+# Auteur : Quentin Hemeryck
+# ============================================================
+
+config antivirus profile
+    edit "AV-AG010"
+        set comment "Antivirus de l\'agence 10"
+        set replacemsg-group ''
+        set feature-set flow
+        set mobile-malware-db enable
+        config http
+            set av-scan block
+            set outbreak-prevention disable
+            set external-blocklist disable
+            set quarantine enable
+            unset archive-block
+            unset archive-log
+            set emulator enable
+        end
+        config ftp
+            set av-scan block
+            set outbreak-prevention disable
+            set external-blocklist disable
+            set quarantine enable
+            unset archive-block
+            unset archive-log
+            set emulator enable
+        end
+        config imap
+            set av-scan block
+            set outbreak-prevention disable
+            set external-blocklist disable
+            set quarantine enable
+            unset archive-block
+            unset archive-log
+            set emulator enable
+            set executables virus
+        end
+        config pop3
+            set av-scan block
+            set outbreak-prevention disable
+            set external-blocklist disable
+            set quarantine enable
+            unset archive-block
+            unset archive-log
+            set emulator enable
+            set executables virus
+        end
+        config smtp
+            set av-scan block
+            set outbreak-prevention disable
+            set external-blocklist disable
+            set quarantine enable
+            unset archive-block
+            unset archive-log
+            set emulator enable
+            set executables virus
+        end
+        config nntp
+            set av-scan disable
+            set outbreak-prevention disable
+            set external-blocklist disable
+            set quarantine disable
+            unset archive-block
+            unset archive-log
+            set emulator enable
+        end
+        config cifs
+            set av-scan block
+            set outbreak-prevention disable
+            set external-blocklist disable
+            set quarantine enable
+            unset archive-block
+            unset archive-log
+            set emulator enable
+        end
+        config nac-quar
+            set infected none
+            set log disable
+        end
+        set outbreak-prevention-archive-scan enable
+        set external-blocklist-enable-all disable
+        set ems-threat-feed disable
+        set av-virus-log enable
+        set av-block-log enable
+        set extended-log disable
+    next 
+end     

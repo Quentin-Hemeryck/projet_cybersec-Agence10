@@ -1,0 +1,361 @@
+# === Configuration des interfaces VLAN & DHCP – Agence 10 ===
+
+# VLAN Informatique (10)
+config system interface
+edit "Informatique"
+set ip 172.29.10.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 10
+set description "Utilisé pour les utilisateurs du département informatique."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 101
+set interface "Informatique"
+set lease-time 28800
+set default-gateway 172.29.10.1
+config ip-range
+edit 10101
+set start-ip 172.29.10.2
+set end-ip 172.29.10.254
+next
+end
+next
+end
+
+# VLAN Commerciaux (15)
+config system interface
+edit "Commerciaux"
+set ip 172.29.15.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 15
+set description "Utilisé pour les utilisateurs du service commercial."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 102
+set interface "Commerciaux"
+set lease-time 28800
+set default-gateway 172.29.15.1
+config ip-range
+edit 10201
+set start-ip 172.29.15.2
+set end-ip 172.29.15.254
+next
+end
+next
+end
+
+# VLAN Technique (20)
+config system interface
+edit "Technique"
+set ip 172.29.20.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 20
+set description "Réservé au personnel technique."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 103
+set interface "Technique"
+set lease-time 28800
+set default-gateway 172.29.20.1
+config ip-range
+edit 10301
+set start-ip 172.29.20.2
+set end-ip 172.29.20.254
+next
+end
+next
+end
+
+# VLAN Finances (25)
+config system interface
+edit "Finances"
+set ip 172.29.25.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 25
+set description "Réservé au département financier."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 104
+set interface "Finances"
+set lease-time 28800
+set default-gateway 172.29.25.1
+config ip-range
+edit 10401
+set start-ip 172.29.25.2
+set end-ip 172.29.25.254
+next
+end
+next
+end
+
+# VLAN Marketing (30)
+config system interface
+edit "Marketing"
+set ip 172.29.30.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 30
+set description "Utilisé par l'équipe marketing."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 105
+set interface "Marketing"
+set lease-time 28800
+set default-gateway 172.29.30.1
+config ip-range
+edit 10501
+set start-ip 172.29.30.2
+set end-ip 172.29.30.254
+next
+end
+next
+end
+
+# VLAN RD (35)
+config system interface
+edit "RD"
+set ip 172.29.35.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 35
+set description "VLAN pour la Recherche et Développement."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 106
+set interface "RD"
+set lease-time 28800
+set default-gateway 172.29.35.1
+config ip-range
+edit 10601
+set start-ip 172.29.35.2
+set end-ip 172.29.35.254
+next
+end
+next
+end
+
+# VLAN RH (40)
+config system interface
+edit "RH"
+set ip 172.29.40.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 40
+set description "VLAN dédié au service des Ressources Humaines."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 107
+set interface "RH"
+set lease-time 28800
+set default-gateway 172.29.40.1
+config ip-range
+edit 10701
+set start-ip 172.29.40.2
+set end-ip 172.29.40.254
+next
+end
+next
+end
+
+# VLAN Direction (45)
+config system interface
+edit "Direction"
+set ip 172.29.45.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 45
+set description "Réservé à la direction générale."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 108
+set interface "Direction"
+set lease-time 28800
+set default-gateway 172.29.45.1
+config ip-range
+edit 10801
+set start-ip 172.29.45.2
+set end-ip 172.29.45.254
+next
+end
+next
+end
+
+# VLAN Gestion (50)
+config system interface
+edit "Gestion"
+set ip 172.29.50.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 50
+set description "Réservé aux équipements réseau."
+set allowaccess ping https ssh http
+next
+end
+
+# VLAN Transit (55)
+config system interface
+edit "Transit"
+set ip 172.29.55.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 55
+set description "Liaison entre le routeur et le firewall dans chaque agence."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 110
+set interface "Transit"
+set lease-time 28800
+set default-gateway 172.29.55.1
+config ip-range
+edit 11001
+set start-ip 172.29.55.2
+set end-ip 172.29.55.254
+next
+end
+next
+end
+
+# VLAN Serveurs (60)
+config system interface
+edit "Serveurs"
+set ip 172.29.60.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 60
+set description "Réservé aux serveurs."
+set allowaccess ping https ssh http
+next
+end
+
+# VLAN Voix (65)
+config system interface
+edit "Voix"
+set ip 172.29.65.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 65
+set description "Réservé aux téléphones IP et aux équipements VoIP."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 112
+set interface "Voix"
+set lease-time 28800
+set default-gateway 172.29.65.1
+config ip-range
+edit 11201
+set start-ip 172.29.65.2
+set end-ip 172.29.65.254
+next
+end
+next
+end
+
+# VLAN Wi‑Fi (70)
+config system interface
+edit "Wi‑Fi"
+set ip 172.29.70.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 70
+set description "Réservé aux équipements de connexion sans fil."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 113
+set interface "Wi‑Fi"
+set lease-time 28800
+set default-gateway 172.29.70.1
+config ip-range
+edit 11301
+set start-ip 172.29.70.2
+set end-ip 172.29.70.254
+next
+end
+next
+end
+
+# VLAN Natif (100)
+config system interface
+edit "Natif"
+set ip 172.29.100.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 100
+set description "VLAN utilisé pour les communications non étiquetées entre équipements réseau."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 114
+set interface "Natif"
+set lease-time 28800
+set default-gateway 172.29.100.1
+config ip-range
+edit 11401
+set start-ip 172.29.100.2
+set end-ip 172.29.100.254
+next
+end
+next
+end
+
+# VLAN Poubelle (199)
+config system interface
+edit "Poubelle"
+set ip 172.29.199.1 255.255.255.0
+set interface "PORT-AG010"
+set vlanid 199
+set description "VLAN isolé pour les ports non utilisés afin d’éviter les connexions indésirables ou malveillantes."
+set allowaccess ping https ssh http
+next
+end
+
+config system dhcp server
+edit 115
+set interface "Poubelle"
+set lease-time 28800
+set default-gateway 172.29.199.1
+config ip-range
+edit 11501
+set start-ip 172.29.199.2
+set end-ip 172.29.199.254
+next
+end
+next
+end
+
+# === Création des zones ===
+config system zone
+edit "VLANS"
+set interface "Informatique" "Commerciaux" "Technique" "Finances" "Marketing" "RD" "RH" "Direction" "Transit" "Serveurs" "Voix" "Wi‑Fi" "Natif"
+next
+edit "VLAN_Gestion"
+set interface "Gestion"
+next
+edit "VLAN_Poubelle"
+set interface "Poubelle"
+next
+end

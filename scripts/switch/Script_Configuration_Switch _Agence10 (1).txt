@@ -1,0 +1,242 @@
+enable
+configure terminal
+
+! ----------------------------------------------------------------------
+! Configuration de base
+! ----------------------------------------------------------------------
+
+hostname G2-SWT-AG010-00-P-201
+service password-encryption
+no ip domain-lookup
+no ip http server
+no ip http secure-server
+
+login block-for 120 attempts 3 within 60
+
+banner motd #
+***********************************************
+ ACCÈS RÉSERVÉ - UTILISATEURS AUTORISÉS UNIQUEMENT
+ Toute activité est enregistrée.
+***********************************************#
+
+line console 0
+ password P@S$W0R#123!AB
+ login
+exit
+
+enable secret A3#S@X1!P9$TB2
+
+! ----------------------------------------------------------------------
+! SSH Sécurisé
+! ----------------------------------------------------------------------
+
+ip domain-name agence10.heh.be
+crypto key generate rsa modulus 2048
+ip ssh version 2
+ip ssh authentication-retries 3
+ip ssh time-out 60
+ip ssh logging events
+
+username prof_admin_esdras privilege 15 secret _3$#Lbgk7uANt0t0_
+username prof_admin_quentin privilege 15 secret _Qu3#H3mer7cK$_
+
+no access-list 10
+access-list 10 permit 172.29.50.0 0.0.0.255
+
+line vty 0 15
+ login local
+ transport input ssh
+ access-class 10 in
+
+! ----------------------------------------------------------------------
+! Synchronisation NTP
+! ----------------------------------------------------------------------
+
+clock timezone CET 1 0
+clock summer-time CEST recurring last Sun Mar 2:00 last Sun Oct 3:00
+ntp server 0.europe.pool.ntp.org
+ntp server 1.europe.pool.ntp.org
+ntp server 2.europe.pool.ntp.org
+ntp server 3.europe.pool.ntp.org
+ntp update-calendar
+
+! ----------------------------------------------------------------------
+! Déclaration des VLANs
+! ----------------------------------------------------------------------
+
+vlan 10 name Informatique
+vlan 15 name Commerciaux
+vlan 20 name Technique
+vlan 25 name Finances
+vlan 30 name Marketing
+vlan 35 name RD
+vlan 40 name RH
+vlan 45 name Direction
+vlan 50 name Gestion
+vlan 55 name Transit
+vlan 60 name Serveurs
+vlan 65 name Voix
+vlan 70 name WiFi
+vlan 100 name Natif
+vlan 199 name Poubelle
+
+! ----------------------------------------------------------------------
+! Interface VLAN 50 (Gestion)
+! ----------------------------------------------------------------------
+
+interface vlan 50
+ ip address 172.29.50.1 255.255.255.0
+ ip helper-address 172.29.50.40
+ no shutdown
+exit
+
+ip default-gateway 172.29.50.40
+
+! ----------------------------------------------------------------------
+! EtherChannel vers le FortiGate (ports 1 et 2)
+! ----------------------------------------------------------------------
+
+interface range GigabitEthernet1/0/1 - 2
+ shutdown
+ channel-group 1 mode active
+ no shutdown
+exit
+
+interface port-channel 1
+ description LACP vers Firewall - VLAN 50 - Gestion
+ switchport mode trunk
+ switchport trunk allowed vlan 10,15,20,25,30,35,40,45,50,55,60,65,70,100,199
+ switchport trunk native vlan 100
+ ip dhcp snooping trust
+ ip arp inspection trust
+exit
+
+! ----------------------------------------------------------------------
+! Sécurisation des ports utilisateurs + protection VLAN Hopping
+! ----------------------------------------------------------------------
+
+interface range GigabitEthernet1/0/3 - 10, GigabitEthernet1/0/13 - 14
+ switchport nonegotiate
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security mac-address sticky
+ switchport port-security violation restrict
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ ip verify source
+exit
+
+interface range GigabitEthernet1/0/11 - 12
+ switchport nonegotiate
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+ no ip verify source
+ no ip arp inspection trust
+exit
+
+! ----------------------------------------------------------------------
+! Affectation des ports VLANs
+! ----------------------------------------------------------------------
+
+interface GigabitEthernet1/0/3
+ description VLAN 10 - Informatique
+ switchport mode access
+ switchport access vlan 10
+
+interface GigabitEthernet1/0/4
+ description VLAN 15 - Commerciaux
+ switchport mode access
+ switchport access vlan 15
+
+interface GigabitEthernet1/0/5
+ description VLAN 20 - Technique
+ switchport mode access
+ switchport access vlan 20
+
+interface GigabitEthernet1/0/6
+ description VLAN 25 - Finances
+ switchport mode access
+ switchport access vlan 25
+
+interface GigabitEthernet1/0/7
+ description VLAN 30 - Marketing
+ switchport mode access
+ switchport access vlan 30
+
+interface GigabitEthernet1/0/8
+ description VLAN 35 - R&D
+ switchport mode access
+ switchport access vlan 35
+
+interface GigabitEthernet1/0/9
+ description VLAN 40 - RH
+ switchport mode access
+ switchport access vlan 40
+
+interface GigabitEthernet1/0/10
+ description VLAN 45 - Direction
+ switchport mode access
+ switchport access vlan 45
+
+interface GigabitEthernet1/0/11
+ description VLAN 50 - Admin FortiGate
+ switchport mode access
+ switchport access vlan 50
+ no shutdown
+ no switchport port-security
+
+interface GigabitEthernet1/0/12
+ description VLAN 50 - Admin FortiGate
+ switchport mode access
+ switchport access vlan 50
+ no shutdown
+ no switchport port-security
+
+interface GigabitEthernet1/0/13
+ description VLAN 60 - Serveurs
+ switchport mode access
+ switchport access vlan 60
+
+interface GigabitEthernet1/0/14
+ description VLAN 65 - Voix
+ switchport mode access
+ switchport access vlan 65
+
+! ----------------------------------------------------------------------
+! Ports inutilisés (poubelle)
+! ----------------------------------------------------------------------
+
+interface range GigabitEthernet1/0/15 - 28
+ description VLAN 199 - Ports non utilisés
+ switchport mode access
+ switchport access vlan 199
+ shutdown
+
+! ----------------------------------------------------------------------
+! DHCP Snooping
+! ----------------------------------------------------------------------
+
+ip dhcp snooping
+ip dhcp snooping vlan 10,15,20,25,30,35,40,45,50,60,65
+
+interface range GigabitEthernet1/0/1 - 2
+ ip dhcp snooping trust
+ ip arp inspection trust
+exit
+
+interface range GigabitEthernet1/0/11 - 12
+ no ip dhcp snooping trust
+exit
+
+! ----------------------------------------------------------------------
+! DAI (Dynamic ARP Inspection) + IPSG (IP Source Guard)
+! ----------------------------------------------------------------------
+
+ip arp inspection vlan 10,15,20,25,30,35,40,45,50,60,65
+
+! ----------------------------------------------------------------------
+! Sauvegarde finale
+! ----------------------------------------------------------------------
+
+end
+copy running-config startup-config

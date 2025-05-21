@@ -1,0 +1,25 @@
+# ================================================
+# ROUTE STATIQUE – VDOM VDM-AG010 vers VDOM root
+# Lien via interface : LNK-AG10-RT0
+# ================================================
+
+config vdom
+edit VDM-AG010
+
+config system interface
+edit "LNK-AG10-RT0"
+set vdom "VDM-AG010"
+set ip 172.29.251.6 255.255.255.252
+set type vdom-link
+next
+end
+
+config router static
+edit 1
+set dst 0.0.0.0 0.0.0.0
+set gateway 172.29.251.5
+set device "LNK-AG10-RT0"
+set distance 10
+set comment "Route vers le VDOM root"
+next
+end

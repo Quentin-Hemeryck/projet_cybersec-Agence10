@@ -1,0 +1,938 @@
+##################################
+
+# Configuration des règles de pare-feu
+
+# Auteur : Esdras Lubanguku Lua Ntoto
+
+##################################
+
+config firewall policy
+    edit 1
+        set status enable
+        set name "VLANS to INTERNET ( Accept )"
+        set uuid 27861858-1b9d-51f0-a39c-1301d904db56
+        set srcintf "VLANS" "VLAN_Gestion"
+        set dstintf "LNK-AG10-RT0"
+        set action accept
+        set ztna-status disable
+        set srcaddr "Gestion address" "IP_VLANS"
+        set dstaddr "all"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "ALL_ICMP" "DNS" "HTTP" "HTTPS" "IMAP" "IMAPS" "POP3" "POP3S" "SMTP" "SMTPS"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status enable
+        set inspection-mode flow
+        set profile-type single
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "deep-inspection"
+        set av-profile "AV-AG010"
+        set webfilter-profile "Web Filter Productivity"
+        set dnsfilter-profile "Dns Filter Strict"
+        set emailfilter-profile ''
+        set dlp-profile ''
+        set file-filter-profile ''
+        set ips-sensor ''
+        set application-list ''
+        set voip-profile ''
+        set sctp-filter-profile ''
+        set logtraffic utm
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat enable
+        set permit-any-host disable
+        set permit-stun-host disable
+        set fixedport disable
+        set ippool disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set decrypted-traffic-mirror ''
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 24
+        set status enable
+        set name "INTERNET to VLANS ( Accept )"
+        set uuid 946487a8-3640-51f0-208d-d15a3e80a412
+        set srcintf "LNK-AG10-RT0"
+        set dstintf "VLAN_Gestion" "VLANS"
+        set action accept
+        set ztna-status disable
+        set srcaddr "all"
+        set dstaddr "Gestion address" "IP_VLANS"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "ALL_ICMP" "HTTP" "HTTPS" "IMAP" "IMAPS" "POP3" "POP3S" "SMTP" "SMTPS"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status enable
+        set inspection-mode flow
+        set profile-type single
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "deep-inspection"
+        set av-profile "AV-AG010"
+        set webfilter-profile "Web Filter Productivity"
+        set dnsfilter-profile "Dns Filter Strict"
+        set emailfilter-profile ''
+        set dlp-profile ''
+        set file-filter-profile ''
+        set ips-sensor ''
+        set application-list ''
+        set voip-profile ''
+        set sctp-filter-profile ''
+        set logtraffic utm
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat enable
+        set permit-any-host disable
+        set permit-stun-host disable
+        set fixedport disable
+        set ippool disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set decrypted-traffic-mirror ''
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 26
+        set status enable
+        set name "VLANS to VLANS ( Accept )"
+        set uuid 948224f2-3640-51f0-9137-ce50804c1516
+        set srcintf "VLANS"
+        set dstintf "VLANS"
+        set action accept
+        set ztna-status disable
+        set srcaddr "IP_VLANS"
+        set dstaddr "IP_VLANS"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "ALL_ICMP" "FTP" "HTTP" "HTTPS" "IMAP" "IMAPS" "NFS" "PING" "POP3" "POP3S" "SAMBA" "SMB" "SMTP" "SMTPS"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status enable
+        set inspection-mode flow
+        set profile-type single
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "deep-inspection"
+        set av-profile "AV-AG010"
+        set webfilter-profile "Strict Web Filter"
+        set dnsfilter-profile "Dns Filter Strict"
+        set emailfilter-profile ''
+        set dlp-profile ''
+        set file-filter-profile ''
+        set ips-sensor ''
+        set application-list ''
+        set voip-profile ''
+        set sctp-filter-profile ''
+        set logtraffic all
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat enable
+        set permit-any-host disable
+        set permit-stun-host disable
+        set fixedport disable
+        set ippool disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set decrypted-traffic-mirror ''
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 27
+        set status enable
+        set name "GESTION to GESTION"
+        set uuid 948f3b2e-3640-51f0-6878-f32c2cdc9c6b
+        set srcintf "VLAN_Gestion"
+        set dstintf "VLAN_Gestion"
+        set action accept
+        set nat64 disable
+        set nat46 disable
+        set ztna-status disable
+        set srcaddr "Gestion address"
+        set dstaddr "Gestion address"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "ALL_ICMP" "DHCP" "DNS" "FTP" "HTTP" "HTTPS" "NFS" "NTP" "SAMBA" "SMB" "SSH" "Windows AD"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status enable
+        set inspection-mode flow
+        set profile-type single
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "deep-inspection"
+        set av-profile "AV-AG010"
+        set webfilter-profile "Strict Web Filter"
+        set dnsfilter-profile "Dns Filter Strict"
+        set emailfilter-profile ''
+        set dlp-profile ''
+        set file-filter-profile ''
+        set ips-sensor ''
+        set application-list ''
+        set voip-profile ''
+        set sctp-filter-profile ''
+        set logtraffic all
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set decrypted-traffic-mirror ''
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 33
+        set status enable
+        set name "Allow SSH to VLAN_Gestion"
+        set uuid 05606cfa-3557-51f0-f432-64b7b16d9090
+        set srcintf "wan2"
+        set dstintf "VLAN_Gestion"
+        set action accept
+        set nat64 disable
+        set nat46 disable
+        set ztna-status disable
+        set srcaddr "all"
+        set dstaddr "all"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "SSH"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status disable
+        set inspection-mode flow
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "no-inspection"
+        set logtraffic all
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 34
+        set status enable
+        set name "Allow session SSH from wan2"
+        set uuid 056dbd60-3557-51f0-cb64-766117e0fd0f
+        set srcintf "wan2"
+        set dstintf "VLAN_Gestion"
+        set action accept
+        set nat64 disable
+        set nat46 disable
+        set ztna-status disable
+        set srcaddr "all"
+        set dstaddr "all"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "SSH"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status disable
+        set inspection-mode flow
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "no-inspection"
+        set logtraffic all
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 35
+        set status enable
+        set name "INTERNET to DMZ ( Accept )"
+        set uuid d4d1d05c-3631-51f0-b4d9-ff5febd675e6
+        set srcintf "LNK-AG10-RT0"
+        set dstintf "internal7"
+        set action accept
+        set nat64 disable
+        set nat46 disable
+        set ztna-status disable
+        set srcaddr "all"
+        set dstaddr "DMZ-AG10"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "HTTP" "HTTPS" "ALL_ICMP"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status enable
+        set inspection-mode flow
+        set profile-type single
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "deep-inspection"
+        set av-profile "AV-AG010"
+        set webfilter-profile "Strict Web Filter"
+        set dnsfilter-profile ''
+        set emailfilter-profile ''
+        set dlp-profile ''
+        set file-filter-profile ''
+        set ips-sensor ''
+        set application-list ''
+        set voip-profile ''
+        set sctp-filter-profile ''
+        set logtraffic all
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set decrypted-traffic-mirror ''
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 36
+        set status enable
+        set name "DMZ to INTERNET (Accept)"
+        set uuid b6c86890-3632-51f0-5081-a8ce1ec2ebc0
+        set srcintf "internal7"
+        set dstintf "LNK-AG10-RT0"
+        set action accept
+        set ztna-status disable
+        set srcaddr "DMZ-AG10"
+        set dstaddr "all"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "ALL_ICMP" "HTTP" "HTTPS"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status enable
+        set inspection-mode flow
+        set profile-type single
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "deep-inspection"
+        set av-profile ''
+        set webfilter-profile "Strict Web Filter"
+        set dnsfilter-profile "Dns Filter Strict"
+        set emailfilter-profile ''
+        set dlp-profile ''
+        set file-filter-profile ''
+        set ips-sensor ''
+        set application-list ''
+        set voip-profile ''
+        set sctp-filter-profile ''
+        set logtraffic all
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat enable
+        set permit-any-host disable
+        set permit-stun-host disable
+        set fixedport disable
+        set ippool disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set decrypted-traffic-mirror ''
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 37
+        set status enable
+        set name "VLANS to OTHERS_DMZ (Accept)"
+        set uuid 310c904e-3634-51f0-a8d5-e7cea39ff673
+        set srcintf "VLAN_Gestion" "VLANS" "wan2"
+        set dstintf "LNK-AG10-RT0"
+        set action accept
+        set ztna-status disable
+        set srcaddr "Gestion address" "IP_VLANS" "wan2 address"
+        set dstaddr "OTHERS_DMZ"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "ALL_ICMP" "HTTP" "HTTPS"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status enable
+        set inspection-mode flow
+        set profile-type single
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "deep-inspection"
+        set av-profile "AV-AG010"
+        set webfilter-profile "Strict Web Filter"
+        set dnsfilter-profile "Dns Filter Strict"
+        set emailfilter-profile ''
+        set dlp-profile ''
+        set file-filter-profile ''
+        set ips-sensor ''
+        set application-list ''
+        set voip-profile ''
+        set sctp-filter-profile ''
+        set logtraffic all
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat enable
+        set permit-any-host disable
+        set permit-stun-host disable
+        set fixedport disable
+        set ippool disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set decrypted-traffic-mirror ''
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 38
+        set status enable
+        set name "OTHERS_DMZ to VLANS (Accept)"
+        set uuid 55cd877a-3635-51f0-e511-a52c2ebe44b3
+        set srcintf "LNK-AG10-RT0"
+        set dstintf "VLAN_Gestion" "VLANS" "wan2"
+        set action accept
+        set ztna-status disable
+        set srcaddr "OTHERS_DMZ"
+        set dstaddr "Gestion address" "IP_VLANS" "wan2 address"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "ALL_ICMP" "ALL_ICMP6" "ALL_TCP" "ALL_UDP" "DNS" "HTTP" "HTTPS"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status enable
+        set inspection-mode flow
+        set profile-type single
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "deep-inspection"
+        set av-profile "AV-AG010"
+        set webfilter-profile "Strict Web Filter"
+        set dnsfilter-profile "Dns Filter Strict"
+        set emailfilter-profile ''
+        set dlp-profile ''
+        set file-filter-profile ''
+        set ips-sensor ''
+        set application-list ''
+        set voip-profile ''
+        set sctp-filter-profile ''
+        set logtraffic all
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat enable
+        set permit-any-host disable
+        set permit-stun-host disable
+        set fixedport disable
+        set ippool disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set decrypted-traffic-mirror ''
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 39
+        set status enable
+        set name "VLANS to GESTION ( Accept )"
+        set uuid 8998965c-3645-51f0-b4f4-eeecd2d6eb4c
+        set srcintf "VLANS"
+        set dstintf "VLAN_Gestion"
+        set action accept
+        set ztna-status disable
+        set srcaddr "IP_VLANS"
+        set dstaddr "Gestion address"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "ALL_ICMP" "DHCP" "DNS" "HTTP" "HTTPS" "NFS" "NTP" "SAMBA"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status enable
+        set inspection-mode flow
+        set profile-type single
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "deep-inspection"
+        set av-profile "AV-AG010"
+        set webfilter-profile "g-default"
+        set dnsfilter-profile "Dns Filter Strict"
+        set emailfilter-profile ''
+        set dlp-profile ''
+        set file-filter-profile ''
+        set ips-sensor ''
+        set application-list ''
+        set voip-profile ''
+        set sctp-filter-profile ''
+        set logtraffic all
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat enable
+        set permit-any-host disable
+        set permit-stun-host disable
+        set fixedport disable
+        set ippool disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set decrypted-traffic-mirror ''
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+    edit 40
+        set status enable
+        set name "GESTION to VLANS ( Accept )"
+        set uuid addaea0a-3646-51f0-213b-7473794215f4
+        set srcintf "VLAN_Gestion"
+        set dstintf "VLANS"
+        set action accept
+        set ztna-status disable
+        set srcaddr "Gestion address"
+        set dstaddr "IP_VLANS"
+        set internet-service disable
+        set internet-service-src disable
+        unset reputation-minimum
+        set internet-service6 disable
+        set internet-service6-src disable
+        unset reputation-minimum6
+        set rtp-nat disable
+        set schedule "always"
+        set schedule-timeout disable
+        set policy-expiry disable
+        set service "ALL_ICMP" "DHCP" "DNS" "FTP" "HTTP" "HTTPS" "NFS" "NTP" "SAMBA"
+        set tos-mask 0x00
+        set anti-replay enable
+        set dynamic-shaping disable
+        set passive-wan-health-measurement disable
+        set utm-status enable
+        set inspection-mode flow
+        set profile-type single
+        set profile-protocol-options "default"
+        set ssl-ssh-profile "deep-inspection"
+        set av-profile "AV-AG010"
+        set webfilter-profile "Strict Web Filter"
+        set dnsfilter-profile "Dns Filter Strict"
+        set emailfilter-profile ''
+        set dlp-profile ''
+        set file-filter-profile ''
+        set ips-sensor ''
+        set application-list ''
+        set voip-profile ''
+        set sctp-filter-profile ''
+        set logtraffic all
+        set logtraffic-start disable
+        set auto-asic-offload enable
+        set np-acceleration enable
+        set nat enable
+        set permit-any-host disable
+        set permit-stun-host disable
+        set fixedport disable
+        set ippool disable
+        set session-ttl 0
+        set vlan-cos-fwd 255
+        set vlan-cos-rev 255
+        set fec disable
+        set wccp disable
+        set disclaimer disable
+        set email-collect disable
+        set natip 0.0.0.0 0.0.0.0
+        set diffserv-forward disable
+        set diffserv-reverse disable
+        set tcp-mss-sender 0
+        set tcp-mss-receiver 0
+        set comments ''
+        set block-notification disable
+        set replacemsg-override-group ''
+        set srcaddr-negate disable
+        set srcaddr6-negate disable
+        set dstaddr-negate disable
+        set dstaddr6-negate disable
+        set service-negate disable
+        set timeout-send-rst disable
+        set captive-portal-exempt disable
+        set decrypted-traffic-mirror ''
+        set dsri disable
+        set radius-mac-auth-bypass disable
+        set delay-tcp-npu-session disable
+        unset vlan-filter
+        set traffic-shaper ''
+        set traffic-shaper-reverse ''
+        set per-ip-shaper ''
+    next
+end

@@ -1,0 +1,517 @@
+###########################################
+
+# Script de configuration pour le profil de sécurité web - Productivity
+
+# Auteur : Esdras Lubanguku Lua Ntoto
+
+###########################################
+
+config webfilter profile
+    edit "Web Filter Productivity"
+        set comment "Filtrage Web pour la productivité de l\'agence 10."
+        set feature-set flow
+        set replacemsg-group ''
+        unset options
+        set https-replacemsg enable
+        unset ovrd-perm
+        set post-action normal
+        config override
+            set ovrd-cookie deny
+            set ovrd-scope user
+            set profile-type list
+            set ovrd-dur-mode constant
+            set ovrd-dur 15m
+        end
+        config web
+            set bword-threshold 10
+            unset bword-table
+            unset urlfilter-table
+            unset content-header-list
+            set blocklist disable
+            unset allowlist
+        end
+        config ftgd-wf
+            unset options
+            unset ovrd
+            config filters
+                edit 1
+                    set category 1
+                    set action block
+                    set log enable
+                next
+                edit 2
+                    set category 2
+                    set action block
+                    set log enable
+                next
+                edit 3
+                    set category 3
+                    set action block
+                    set log enable
+                next
+                edit 4
+                    set category 4
+                    set action block
+                    set log enable
+                next
+                edit 5
+                    set category 5
+                    set action block
+                    set log enable
+                next
+                edit 6
+                    set category 6
+                    set action block
+                    set log enable
+                next
+                edit 7
+                    set category 7
+                    set action block
+                    set log enable
+                next
+                edit 8
+                    set category 8
+                    set action block
+                    set log enable
+                next
+                edit 9
+                    set category 9
+                    set action block
+                    set log enable
+                next
+                edit 11
+                    set category 11
+                    set action block
+                    set log enable
+                next
+                edit 12
+                    set category 12
+                    set action block
+                    set log enable
+                next
+                edit 13
+                    set category 13
+                    set action block
+                    set log enable
+                next
+                edit 14
+                    set category 14
+                    set action block
+                    set log enable
+                next
+                edit 15
+                    set category 15
+                    set action block
+                    set log enable
+                next
+                edit 16
+                    set category 16
+                    set action block
+                    set log enable
+                next
+                edit 17
+                    set category 17
+                    set action block
+                    set log enable
+                next
+                edit 18
+                    set category 18
+                    set action block
+                    set log enable
+                next
+                edit 19
+                    set category 19
+                    set action warning
+                    set warn-duration 5m
+                    set log enable
+                    set warning-prompt per-category
+                next
+                edit 20
+                    set category 20
+                    set action warning
+                    set warn-duration 5m
+                    set log enable
+                    set warning-prompt per-category
+                next
+                edit 23
+                    set category 23
+                    set action monitor
+                    set log enable
+                next
+                edit 24
+                    set category 24
+                    set action monitor
+                    set log enable
+                next
+                edit 25
+                    set category 25
+                    set action monitor
+                    set log enable
+                next
+                edit 26
+                    set category 26
+                    set action block
+                    set log enable
+                next
+                edit 28
+                    set category 28
+                    set action warning
+                    set warn-duration 5m
+                    set log enable
+                    set warning-prompt per-category
+                next
+                edit 29
+                    set category 29
+                    set action warning
+                    set warn-duration 5m
+                    set log enable
+                    set warning-prompt per-category
+                next
+                edit 30
+                    set category 30
+                    set action warning
+                    set warn-duration 5m
+                    set log enable
+                    set warning-prompt per-category
+                next
+                edit 31
+                    set category 31
+                    set action monitor
+                    set log enable
+                next
+                edit 33
+                    set category 33
+                    set action monitor
+                    set log enable
+                next
+                edit 34
+                    set category 34
+                    set action block
+                    set log enable
+                next
+                edit 59
+                    set category 59
+                    set action block
+                    set log enable
+                next
+                edit 62
+                    set category 62
+                    set action block
+                    set log enable
+                next
+                edit 83
+                    set category 83
+                    set action block
+                    set log enable
+                next
+                edit 96
+                    set category 96
+                    set action block
+                    set log enable
+                next
+                edit 98
+                    set category 98
+                    set action block
+                    set log enable
+                next
+                edit 99
+                    set category 99
+                    set action block
+                    set log enable
+                next
+                edit 57
+                    set category 57
+                    set action block
+                    set log enable
+                next
+                edit 63
+                    set category 63
+                    set action block
+                    set log enable
+                next
+                edit 64
+                    set category 64
+                    set action block
+                    set log enable
+                next
+                edit 65
+                    set category 65
+                    set action block
+                    set log enable
+                next
+                edit 66
+                    set category 66
+                    set action block
+                    set log enable
+                next
+                edit 67
+                    set category 67
+                    set action block
+                    set log enable
+                next
+                edit 72
+                    set category 72
+                    set action warning
+                    set warn-duration 5m
+                    set log enable
+                    set warning-prompt per-category
+                next
+                edit 75
+                    set category 75
+                    set action monitor
+                    set log enable
+                next
+                edit 76
+                    set category 76
+                    set action warning
+                    set warn-duration 5m
+                    set log enable
+                    set warning-prompt per-category
+                next
+                edit 61
+                    set category 61
+                    set action block
+                    set log enable
+                next
+                edit 86
+                    set category 86
+                    set action block
+                    set log enable
+                next
+                edit 88
+                    set category 88
+                    set action block
+                    set log enable
+                next
+                edit 90
+                    set category 90
+                    set action block
+                    set log enable
+                next
+                edit 91
+                    set category 91
+                    set action block
+                    set log enable
+                next
+                edit 35
+                    set category 35
+                    set action monitor
+                    set log enable
+                next
+                edit 36
+                    set category 36
+                    set action monitor
+                    set log enable
+                next
+                edit 37
+                    set category 37
+                    set action monitor
+                    set log enable
+                next
+                edit 38
+                    set category 38
+                    set action monitor
+                    set log enable
+                next
+                edit 39
+                    set category 39
+                    set action monitor
+                    set log enable
+                next
+                edit 40
+                    set category 40
+                    set action monitor
+                    set log enable
+                next
+                edit 42
+                    set category 42
+                    set action warning
+                    set warn-duration 5m
+                    set log enable
+                    set warning-prompt per-category
+                next
+                edit 44
+                    set category 44
+                    set action monitor
+                    set log enable
+                next
+                edit 46
+                    set category 46
+                    set action warning
+                    set warn-duration 5m
+                    set log enable
+                    set warning-prompt per-category
+                next
+                edit 47
+                    set category 47
+                    set action block
+                    set log enable
+                next
+                edit 48
+                    set category 48
+                    set action monitor
+                    set log enable
+                next
+                edit 54
+                    set category 54
+                    set action monitor
+                    set log enable
+                next
+                edit 55
+                    set category 55
+                    set action monitor
+                    set log enable
+                next
+                edit 58
+                    set category 58
+                    set action monitor
+                    set log enable
+                next
+                edit 68
+                    set category 68
+                    set action monitor
+                    set log enable
+                next
+                edit 69
+                    set category 69
+                    set action monitor
+                    set log enable
+                next
+                edit 70
+                    set category 70
+                    set action monitor
+                    set log enable
+                next
+                edit 71
+                    set category 71
+                    set action monitor
+                    set log enable
+                next
+                edit 79
+                    set category 79
+                    set action monitor
+                    set log enable
+                next
+                edit 80
+                    set category 80
+                    set action monitor
+                    set log enable
+                next
+                edit 82
+                    set category 82
+                    set action monitor
+                    set log enable
+                next
+                edit 85
+                    set category 85
+                    set action monitor
+                    set log enable
+                next
+                edit 87
+                    set category 87
+                    set action monitor
+                    set log enable
+                next
+                edit 89
+                    set category 89
+                    set action monitor
+                    set log enable
+                next
+                edit 41
+                    set category 41
+                    set action monitor
+                    set log enable
+                next
+                edit 43
+                    set category 43
+                    set action monitor
+                    set log enable
+                next
+                edit 49
+                    set category 49
+                    set action monitor
+                    set log enable
+                next
+                edit 50
+                    set category 50
+                    set action monitor
+                    set log enable
+                next
+                edit 51
+                    set category 51
+                    set action monitor
+                    set log enable
+                next
+                edit 52
+                    set category 52
+                    set action monitor
+                    set log enable
+                next
+                edit 53
+                    set category 53
+                    set action monitor
+                    set log enable
+                next
+                edit 56
+                    set category 56
+                    set action monitor
+                    set log enable
+                next
+                edit 81
+                    set category 81
+                    set action monitor
+                    set log enable
+                next
+                edit 84
+                    set category 84
+                    set action monitor
+                    set log enable
+                next
+                edit 92
+                    set category 92
+                    set action monitor
+                    set log enable
+                next
+                edit 93
+                    set category 93
+                    set action monitor
+                    set log enable
+                next
+                edit 94
+                    set category 94
+                    set action monitor
+                    set log enable
+                next
+                edit 95
+                    set category 95
+                    set action monitor
+                    set log enable
+                next
+                edit 97
+                    set category 97
+                    set action monitor
+                    set log enable
+                next
+                edit 100
+                    set category 0
+                    set action warning
+                    set warn-duration 5m
+                    set log enable
+                    set warning-prompt per-category
+                next
+            end
+            set rate-javascript-urls enable
+            set rate-css-urls enable
+            set rate-crl-urls enable
+        end
+        set wisp disable
+        set log-all-url disable
+        set web-content-log enable
+        set web-filter-command-block-log enable
+        set web-filter-cookie-log enable
+        set web-url-log enable
+        set web-invalid-domain-log enable
+        set web-ftgd-err-log enable
+        set extended-log disable
+    next
+end

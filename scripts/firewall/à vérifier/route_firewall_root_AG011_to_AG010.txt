@@ -1,0 +1,35 @@
+# ============================================
+# ROUTE + FIREWALL POLICY DANS ROOT
+# Pour autoriser la communication AG011 → AG010
+# ============================================
+
+config vdom
+edit root
+
+# === 1. Route vers le réseau de l'agence 11 ===
+config router static
+edit 10
+    set dst 172.30.0.0 255.255.0.0               # Réseau global AG011
+    set gateway 172.30.251.2                     # IP AG011 sur le lien VDOM
+    set device "LNK-AG11-RT1"                    # Interface inter-VDOM root vers AG011
+    set comment "Route vers le réseau de l'agence 11"
+next
+end
+
+# === 2. Règle firewall pour autoriser AG011 → AG010 ===
+config firewall policy
+edit 100
+    set name "AG011-to-AG010"
+    set srcintf "LNK-AG11-RT1"
+    set dstintf "LNK-AG10-RT1"
+    set srcaddr "all"
+    set dstaddr "all"
+    set action accept
+    set schedule "always"
+    set service "ALL"
+    set logtraffic all
+    set comments "Autoriser trafic inter-agence AG011 vers AG010"
+next
+end
+
+end

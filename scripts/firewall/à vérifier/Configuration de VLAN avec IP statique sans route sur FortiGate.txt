@@ -1,0 +1,17 @@
+### Configuration de VLAN avec IP statique sans route sur FortiGate
+### Auteur : Esdras Lubanguku Lua Ntoto
+#
+#
+config system interface
+edit "VLANX"
+set vdom "VDM-AG10"               
+#
+# Adresse IP et masque
+set ip 172.29.X.1 255.255.255.0
+#
+# Interface physique à laquelle est attaché le VLAN
+set interface "port3 ou port4"
+set vlanid X
+next
+end
+#
