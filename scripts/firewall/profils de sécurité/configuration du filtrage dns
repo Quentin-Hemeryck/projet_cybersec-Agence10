@@ -1,0 +1,382 @@
+#####################################
+
+# Script de configuration pour le filtrage dns
+
+# Auteur : Esdras Lubanguku Lua Ntoto
+
+######################################
+
+config dnsfilter profile
+    edit "Dns Filter Strict"
+        set comment "filtrage dns stricte"
+        config domain-filter
+            unset domain-filter-table
+        end
+        config ftgd-dns
+            unset options
+            config filters
+                edit 1
+                    set category 1
+                    set action block
+                    set log enable
+                next
+                edit 2
+                    set category 3
+                    set action block
+                    set log enable
+                next
+                edit 3
+                    set category 4
+                    set action block
+                    set log enable
+                next
+                edit 4
+                    set category 5
+                    set action block
+                    set log enable
+                next
+                edit 5
+                    set category 6
+                    set action block
+                    set log enable
+                next
+                edit 6
+                    set category 12
+                    set action block
+                    set log enable
+                next
+                edit 7
+                    set category 59
+                    set action block
+                    set log enable
+                next
+                edit 8
+                    set category 62
+                    set action block
+                    set log enable
+                next
+                edit 9
+                    set category 83
+                    set action block
+                    set log enable
+                next
+                edit 10
+                    set category 96
+                    set action block
+                    set log enable
+                next
+                edit 11
+                    set category 98
+                    set action block
+                    set log enable
+                next
+                edit 12
+                    set category 99
+                    set action block
+                    set log enable
+                next
+                edit 13
+                    set category 2
+                    set action block
+                    set log enable
+                next
+                edit 14
+                    set category 7
+                    set action block
+                    set log enable
+                next
+                edit 15
+                    set category 8
+                    set action block
+                    set log enable
+                next
+                edit 16
+                    set category 9
+                    set action block
+                    set log enable
+                next
+                edit 17
+                    set category 11
+                    set action block
+                    set log enable
+                next
+                edit 18
+                    set category 13
+                    set action block
+                    set log enable
+                next
+                edit 19
+                    set category 14
+                    set action block
+                    set log enable
+                next
+                edit 20
+                    set category 15
+                    set action block
+                    set log enable
+                next
+                edit 21
+                    set category 16
+                    set action block
+                    set log enable
+                next
+                edit 22
+                    set category 57
+                    set action block
+                    set log enable
+                next
+                edit 23
+                    set category 63
+                    set action block
+                    set log enable
+                next
+                edit 24
+                    set category 64
+                    set action block
+                    set log enable
+                next
+                edit 25
+                    set category 65
+                    set action block
+                    set log enable
+                next
+                edit 26
+                    set category 66
+                    set action block
+                    set log enable
+                next
+                edit 27
+                    set category 67
+                    set action block
+                    set log enable
+                next
+                edit 28
+                    set category 19
+                    set action monitor
+                next
+                edit 29
+                    set category 24
+                    set action monitor
+                next
+                edit 30
+                    set category 25
+                    set action monitor
+                next
+                edit 31
+                    set category 72
+                    set action monitor
+                next
+                edit 32
+                    set category 75
+                    set action block
+                    set log enable
+                next
+                edit 33
+                    set category 76
+                    set action monitor
+                next
+                edit 34
+                    set category 26
+                    set action block
+                    set log enable
+                next
+                edit 35
+                    set category 61
+                    set action block
+                    set log enable
+                next
+                edit 36
+                    set category 86
+                    set action block
+                    set log enable
+                next
+                edit 37
+                    set category 88
+                    set action block
+                    set log enable
+                next
+                edit 38
+                    set category 90
+                    set action block
+                    set log enable
+                next
+                edit 39
+                    set category 91
+                    set action block
+                    set log enable
+                next
+                edit 40
+                    set category 17
+                    set action block
+                    set log enable
+                next
+                edit 41
+                    set category 18
+                    set action block
+                    set log enable
+                next
+                edit 42
+                    set category 20
+                    set action block
+                    set log enable
+                next
+                edit 43
+                    set category 23
+                    set action monitor
+                next
+                edit 44
+                    set category 28
+                    set action block
+                    set log enable
+                next
+                edit 45
+                    set category 29
+                    set action block
+                    set log enable
+                next
+                edit 46
+                    set category 30
+                    set action block
+                    set log enable
+                next
+                edit 47
+                    set category 34
+                    set action block
+                    set log enable
+                next
+                edit 48
+                    set category 35
+                    set action monitor
+                next
+                edit 49
+                    set category 36
+                    set action monitor
+                next
+                edit 50
+                    set category 37
+                    set action block
+                    set log enable
+                next
+                edit 51
+                    set category 42
+                    set action block
+                    set log enable
+                next
+                edit 52
+                    set category 44
+                    set action monitor
+                next
+                edit 53
+                    set category 46
+                    set action block
+                    set log enable
+                next
+                edit 54
+                    set category 47
+                    set action block
+                    set log enable
+                next
+                edit 55
+                    set category 48
+                    set action block
+                    set log enable
+                next
+                edit 56
+                    set category 54
+                    set action monitor
+                next
+                edit 57
+                    set category 55
+                    set action monitor
+                next
+                edit 58
+                    set category 68
+                    set action monitor
+                next
+                edit 59
+                    set category 69
+                    set action monitor
+                next
+                edit 60
+                    set category 70
+                    set action monitor
+                next
+                edit 61
+                    set category 71
+                    set action block
+                    set log enable
+                next
+                edit 62
+                    set category 77
+                    set action block
+                    set log enable
+                next
+                edit 63
+                    set category 79
+                    set action block
+                    set log enable
+                next
+                edit 64
+                    set category 82
+                    set action monitor
+                next
+                edit 65
+                    set category 85
+                    set action block
+                    set log enable
+                next
+                edit 66
+                    set category 87
+                    set action block
+                    set log enable
+                next
+                edit 67
+                    set category 49
+                    set action block
+                    set log enable
+                next
+                edit 68
+                    set category 50
+                    set action monitor
+                next
+                edit 69
+                    set category 52
+                    set action monitor
+                next
+                edit 70
+                    set category 53
+                    set action monitor
+                next
+                edit 71
+                    set category 56
+                    set action monitor
+                next
+                edit 72
+                    set category 81
+                    set action monitor
+                next
+                edit 73
+                    set category 84
+                    set action monitor
+                next
+                edit 74
+                    set category 92
+                    set action monitor
+                next
+                edit 75
+                    set category 0
+                    set action monitor
+                next
+            end
+        end
+        set log-all-domain disable
+        set sdns-ftgd-err-log enable
+        set sdns-domain-log enable
+        set block-action redirect
+        set block-botnet enable
+        set safe-search enable
+        set redirect-portal 0.0.0.0
+        set redirect-portal6 ::
+        set youtube-restrict strict
+    next
+end

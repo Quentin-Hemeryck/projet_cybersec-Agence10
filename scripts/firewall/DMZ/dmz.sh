@@ -1,4 +1,5 @@
 #!/bin/bash
+# Auteur : Lubanguku Esdras
 
 set -eo pipefail
 
