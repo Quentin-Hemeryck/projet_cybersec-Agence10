@@ -9,7 +9,7 @@ Projet académique de déploiement et sécurisation d'une infrastructure réseau
 - **Hemeryck Quentin** - quentin.hemeryck@std.heh.be
 - **Lubanguku Lua Ntoto Esdras** - esdras.lubangukuluantoto@std.heh.be
 
-**Encadrant :** M. Denis Mandoux  
+**Encadrant :** M. Mandoux  
 **Année académique :** 2024-2025
 
 ## Objectifs
